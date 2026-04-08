@@ -22,6 +22,7 @@ const getChefBirthday = async (id) => {
         throw new Error(`non posso recuperare l'utente ${recipe.userId}`)
     } if (user.message) {
         throw new Error(user.message)
+    }
 
     return user; //ritorno tutto utente non solo la data di nascita
 }
