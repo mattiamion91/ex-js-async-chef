@@ -12,13 +12,16 @@ const getChefBirthday = async (id) => {
         recipe = await fetchJson(`https://dummyjson.com/recipes/${id}`)
     } catch (error) {
         throw new Error(`non posso recuperare la ricetta ${id}`)
+    } if (recipe.message) {
+        throw new Error(recipe.message)
     }
     let user
     try {
         user = await fetchJson(`https://dummyjson.com/users/${recipe.userId}`)
     } catch (error) {
         throw new Error(`non posso recuperare l'utente ${recipe.userId}`)
-    }
+    } if (user.message) {
+        throw new Error(user.message)
 
     return user; //ritorno tutto utente non solo la data di nascita
 }
